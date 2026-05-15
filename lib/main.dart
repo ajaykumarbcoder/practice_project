@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:practice_project/01_basic_counter/getx_architecture/routes/app_pages.dart';
-import 'package:provider/provider.dart';
-import '01_basic_counter/provider_architecture/provider/counter_provider.dart';
 import 'screens/home_screen.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (_) => CounterProvider(), child: const MyPracticeApp()));
+  runApp(const ProviderScope(child:  MyPracticeApp()));
 }
 
 class MyPracticeApp extends StatelessWidget {

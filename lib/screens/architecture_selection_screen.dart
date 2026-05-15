@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_project/01_basic_counter/getx_architecture/routes/app_routes.dart';
 import 'package:practice_project/01_basic_counter/provider_architecture/view/counter_screen.dart';
+import 'package:practice_project/01_basic_counter/riverpod_architecture/view/riverpod_counter_screen.dart';
 
 class ArchitectureSelectionScreen extends StatelessWidget {
   final String moduleTitle;
@@ -55,7 +56,14 @@ class ArchitectureSelectionScreen extends StatelessWidget {
               trailing: const Icon(
                 Icons.arrow_forward_ios,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const RiverpodCounterScreen(),
+                  ),
+                );
+              },
             ),
           ],
         ),
