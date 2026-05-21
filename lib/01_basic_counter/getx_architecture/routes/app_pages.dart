@@ -9,6 +9,5 @@ class AppPages {
         name: AppRoutes.counter,
         page: () => const GetXCounterScreen(),
         binding: CounterBinding()),
-
   ];
 }

@@ -1,41 +1,36 @@
 import 'package:flutter/material.dart';
-import 'architecture_selection_screen.dart';
+import 'package:practice_project/screens/api_app_architecture_selection_screen.dart';
+import 'counter_app_architecture_selection_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final List<Map<String, dynamic>> modules = [
-
       {
         "title": "01 Basic Counter",
         "screen": const ArchitectureSelectionScreen(
           moduleTitle: "01 Basic Counter",
         ),
       },
-
       {
         "title": "02 Theme Switch",
         "screen": const SizedBox(),
       },
-
       {
         "title": "03 Todo CRUD",
         "screen": const SizedBox(),
       },
-
       {
         "title": "04 Form Validation",
         "screen": const SizedBox(),
       },
-
       {
         "title": "05 API Call",
-        "screen": const SizedBox(),
+        "screen":
+            const ApiAppArchitectureSelectionScreen(moduleTitle: '05 API Call')
       },
-
     ];
 
     return Scaffold(
@@ -44,7 +39,6 @@ class HomeScreen extends StatelessWidget {
           'Flutter  Project',
         ),
       ),
-
       body: ListView.builder(
         itemCount: modules.length,
         itemBuilder: (context, index) {
@@ -61,7 +55,6 @@ class HomeScreen extends StatelessWidget {
                   builder: (_) => module["screen"],
                 ),
               );
-
             },
           );
         },
