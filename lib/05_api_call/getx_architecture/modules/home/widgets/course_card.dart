@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class MyCoursesList extends StatelessWidget {
+class CourseCard extends StatelessWidget {
   final String imageUrl;
   final int enrollUsers;
   final String title;
@@ -11,7 +11,7 @@ class MyCoursesList extends StatelessWidget {
   final int lectures;
   final int chapters;
 
-  const MyCoursesList(
+  const CourseCard(
       {super.key,
       required this.imageUrl,
       required this.title,
