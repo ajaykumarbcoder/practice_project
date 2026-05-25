@@ -11,13 +11,14 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fetchCourses();
   }
 
   Future<void> fetchCourses() async {
     try {
       isLoading.value = true;
       final result = await courseRepository.getCourses();
-      courses.assignAll(result);
+      courses.addAll(result);
     } catch (e) {
       Get.snackbar('Error', e.toString());
     } finally {

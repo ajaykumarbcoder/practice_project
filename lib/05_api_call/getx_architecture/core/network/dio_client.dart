@@ -10,6 +10,11 @@ class DioClient {
 
   DioClient._internal() {
     dio = Dio(BaseOptions(
+        headers: {
+          "x-access-token":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uIjoiNmEwZTkyZTMwMzdlNzgxMTY2OGY4ZTQyIiwidXNlciI6IjY5ODQyZjA0MTdiYmQ2ZmZhMGE4NzJkOSIsImlhdCI6MTc3OTM0MDAwMywiZXhwIjoxODEwODc2MDAzfQ.pSTm3eQUz8_tC0tbC2twdtayxXqSqiHkLMZszFj_iKI",
+          "Domain": "app.litcode.in"
+        },
         baseUrl: ApiConstants.baseUrl,
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30)));

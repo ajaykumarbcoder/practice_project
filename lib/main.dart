@@ -17,7 +17,7 @@ class MyPracticeApp extends StatelessWidget {
       getPages: AppPages.routes,
       title: 'Flutter',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white
       ),
       home: const HomeScreen(),
     );

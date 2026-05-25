@@ -9,12 +9,16 @@ class CourseModel {
   final String description;
   final String coverImage;
 
+  final int purchaseCount;
+
   const CourseModel(
       {required this.id,
       required this.name,
       required this.tags,
       required this.description,
-      required this.coverImage});
+      required this.coverImage,
+      required this.purchaseCount,
+      });
 
   factory CourseModel.fromJson(Map<String, dynamic> json)=>
     _$CourseModelFromJson(json);

@@ -7,9 +7,13 @@ class CourseProvider {
   final Dio dio = DioClient().dio;
 
   Future<List<CourseModel>> getCourses() async {
-    final response = await dio.get(ApiConstants.coursesList);
-    return (response.data.items as List)
-        .map((e) => CourseModel.fromJson(e))
-        .toList();
+    final response = await dio.get(ApiConstants.courses);
+    if (response.statusCode == 200) {
+      return (response.data['items'] as List)
+          .map((e) => CourseModel.fromJson(e))
+          .toList();
+    } else{
+      return [];
+    }
   }
 }

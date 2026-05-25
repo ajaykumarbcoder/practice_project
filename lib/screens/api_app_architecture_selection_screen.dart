@@ -38,7 +38,7 @@ class ApiAppArchitectureSelectionScreen extends StatelessWidget {
               ),
               onTap: () {
                 print('On Tap');
-                Get.toNamed(AppRoutes.home);
+                Get.toNamed(AppRoutes.customer);
               },
             ),
             ListTile(
