@@ -4,21 +4,23 @@ import 'package:practice_project/05_api_call/getx_architecture/data/models/custo
 import 'package:practice_project/05_api_call/getx_architecture/data/repositories/customer_repository.dart';
 
 class CustomerController extends GetxController {
-  final CustomerRepository repository;
-  CustomerController(this.repository);
+  final CustomerRepository customerRepository;
+  CustomerController(this.customerRepository);
   RxList<CustomerModel> customers = <CustomerModel>[].obs;
   RxBool isLoading = false.obs;
   RxBool isLoadMore = false.obs;
   RxBool hasMore = true.obs;
-  int pageNo = 1;
-  final int pageSize = 10;
+  RxInt pageNo = 1.obs;
+  RxInt pageSize = 10.obs;
   final ScrollController scrollController = ScrollController();
+
   @override
   void onInit() {
     super.onInit();
     getCustomers();
     scrollController.addListener(_scrollListener);
   }
+
   void _scrollListener() {
     if (scrollController.position.pixels >=
         scrollController.position.maxScrollExtent - 200) {
@@ -27,29 +29,23 @@ class CustomerController extends GetxController {
       }
     }
   }
-  Future<void> getCustomers({
-    bool isPagination = false,
-  }) async {
+
+  Future<void> getCustomers({ bool isPagination = false}) async {
     try {
       if (isPagination) {
         isLoadMore.value = true;
       } else {
         isLoading.value = true;
       }
-      final result = await repository.getCustomer(
-        pageNo: pageNo,
-        pageSize: pageSize,
-      );
-      if (result.length < pageSize) {
+      final result = await customerRepository.getCustomer(
+          pageNo: pageNo.value, pageSize: pageSize.value);
+      if (result.length < pageSize.value) {
         hasMore.value = false;
       }
       customers.addAll(result);
-      pageNo++;
+      pageNo.value++;
     } catch (e) {
-      Get.snackbar(
-        'Error',
-        e.toString(),
-      );
+      Get.snackbar('Error', e.toString());
     } finally {
       isLoading.value = false;
       isLoadMore.value = false;
