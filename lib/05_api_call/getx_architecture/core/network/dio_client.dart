@@ -19,5 +19,19 @@ class DioClient {
         connectTimeout: const Duration(seconds: 30),
         receiveTimeout: const Duration(seconds: 30)));
     dio.interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
+   // dio.interceptors.add(_AuthInterceptor());
+  }
+}
+// When the Industry standard (OAuth, JWT) / Authorization Bearer
+class _AuthInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    super.onRequest(options, handler);
+    String token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uIjoiNmEwZTkyZTMwMzdlNzgxMTY2OGY4ZTQyIiwidXNlciI6IjY5ODQyZjA0MTdiYmQ2ZmZhMGE4NzJkOSIsImlhdCI6MTc3OTM0MDAwMywiZXhwIjoxODEwODc2MDAzfQ.pSTm3eQUz8_tC0tbC2twdtayxXqSqiHkLMZszFj_iKI";
+    if (token.isNotEmpty) {
+      options.headers['Authorization'] = "Bearer $token";
+    }
+    return handler.next(options);
   }
 }
