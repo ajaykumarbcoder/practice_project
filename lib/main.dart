@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:practice_project/05_api_call/getx_architecture/routes/app_pages.dart';
+import 'package:practice_project/14_firebase_master_app/getx_architecture/modules/auth/bindings/auth_binding.dart';
+import 'package:practice_project/14_firebase_master_app/getx_architecture/modules/auth/views/login_view.dart';
 import 'package:practice_project/firebase_options.dart';
 import 'screens/home_screen.dart';
 
@@ -23,7 +25,9 @@ class MyPracticeApp extends StatelessWidget {
       getPages: AppPages.routes,
       title: 'Flutter',
       theme: ThemeData(scaffoldBackgroundColor: Colors.white),
-      home: const HomeScreen(),
+      home: const LoginView(),
+      initialBinding: AuthBinding(),
     );
   }
 }
+
